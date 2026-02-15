@@ -1,0 +1,1102 @@
+Processing text: 明日牛乳を買う
+Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 45, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Processing text: 明日牛乳を買う
+Success: {"category": "Shopping", "summary": "Buy milk tomorrow."}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u725b\u4e73\u3092\u8cb7\u3046"}, "timestamp": 1625667243123, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "Shopping", "summary": "Buy milk."}
+Callback Error: LineBotApiError: status_code=400, request_id=b53d06ef-f8f9-484f-a8d1-4ee13ac4c8df, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 00:52:22 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': 'b53d06ef-f8f9-484f-a8d1-4ee13ac4c8df', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=b53d06ef-f8f9-484f-a8d1-4ee13ac4c8df, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 00:52:22 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': 'b53d06ef-f8f9-484f-a8d1-4ee13ac4c8df', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600958336837616114","quoteToken":"t_3ZLyuwwcVpurJfvztZcEjG-3cxTtTZG-BQlYFmrIusKEP1HALTGH0XG6wUJ9Y2NRd9E1hQ6rPbYS13nbcqgY51i62x0CXOPBXnWCnFZvDJH1HcLdi0jSt6tktzc6Qn3OrEJJIzjaHt_qmzHe4NJA","markAsReadToken":"3PO_Q2hbsLMjgCq2QDLX9ch3qORsIRde7h-VLZtJZnIk1939PWvWMCeU8roH9exzUOE16vQN270Jsnl0uOOH4OJPRk9bdobCQit0m0CPbwJ1zAWuOQzhGL_I3rEeWlpGpAa6mVjbpFexarXjcl75ZO3Pl7Lm0H2mPU7cAmv2PqjH1cmNIC4s_c_fAv6AjGoUlmwOWoUCW1JEf32O6vEuww","text":"カレー　トマト買う"},"webhookEventId":"01KHCT65FGASY7WDPWT71DG2XQ","deliveryContext":{"isRedelivery":false},"timestamp":1771030386112,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"11d6e9364d604c4596bf9866403c57a6","mode":"active"}]}
+Processing text: カレー　トマト買う
+Success: {"category": "Shopping", "summary": "Buy curry and tomatoes."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600958399333007690","quoteToken":"gWaoe8T-ko2Q72csagXR352oFN6Wv_as37RWcBCb74JeLI-StcyuCMKo3sRDSFb3WtUt5agH5461iNrsP1Bg4Qr6z0ggIHW2QkAFnxOBY-_kji414B26eDabNtSzpWxbWfTpeujmYTYcLiYHLbB5cQ","markAsReadToken":"4XTDhXh3blV1d3ykt4IkusM0M65W2uymjavklsgJyc196Iw6_1WbsmKK_KuvyltC_oPSyhWbjaKHFo-zGMGqipU1eV8YWEs_LSqE6PEQzGL4qXIFl8kzqC3-jfu3Wy3mrX4x_Xpa0TLuTGQdTNs8Bb9RWuovSFN0qmmZzgsg0Z3apt-5N1kTQDbvFh7KjJt3u4KZotYCalUqhLVSv9J0zQ","text":"牛乳を買う"},"webhookEventId":"01KHCT7A25QKW543S6XGPCZH87","deliveryContext":{"isRedelivery":false},"timestamp":1771030423378,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"05165b47eb6847b5943c435854e81b11","mode":"active"}]}
+Processing text: 牛乳を買う
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 46, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600958416479060211","quoteToken":"Acbp10v_HKyc7j78lMA4vPfyhSc5AyHbIpRtualnuM0nhaLfbZbZVUZt0BD0zvSP8O7fSatLX6YkzZkdxhSCQX4q2reWrF9Clmdos8DRB_HThYO7XOb8hdJHoSfIgp6BRYzEbMXzs3aT05JTJh6VBw","markAsReadToken":"6GHjp9IcmCluM32KGb00CE5VPkzByI32gwCJyOCSqDXgIZaYwTUE3KeXYiHeRdc3Ed6TG8ZahiIxy-OjyyQ9EuwB0rEbqMCYHIzfPkM5aucPe4jNEuxdQbRADjc4JurtTC6Z-ikMQDnmacrLOx_BH-ymfnWAlyR47JGsIOIjTUCtBHImDIrw8QTjc1KVQRbctFam30AK1E2QY8Xq4bzH6Q","text":"レポート　21日まで"},"webhookEventId":"01KHCT7M1BKFYB2QR1PX9578AD","deliveryContext":{"isRedelivery":false},"timestamp":1771030433572,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"93b32200142e4cccba696b5b8add2e02","mode":"active"}]}
+Processing text: レポート　21日まで
+Success: {"category": "[ToDo]", "summary": "Report due by the 21st."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600958440000717348","quoteToken":"5IVID-iEkMSgOGJ1zvJgSytaIBBcHjL3Y9ImzMnIuJUDHKkWTIfgHxmWOA7_SGbPnq8FpIMI8ubsewR39Pjnf0Pqc0iONQe50ou_2MOKXfojB-9tutYmDg0B94O5xGPcF52eqG3J5x85AqOdlB5Axw","markAsReadToken":"ZTCOCHtvILOWLJxDP3Iis05Sz2uoDwZvV88e6c_ycMgFFE9ZkjhO5KhuHpaPkGkVcLPkIH6KiUSo-HNQZXmnVDkFa8GeZnVDad3HF8tP2hIxySdetzCZlByFUtg_-WCoz-SDx2iDyt8prFYGWV0wxAqye7QcV-K4M5QAEEoSvDVVMx1rLC7aXiIKXcRBQ0aCy5WcuV8uAr247wM2MpqCbA","text":"建築課題ーレポート提出"},"webhookEventId":"01KHCT81JYZE54ZYXXHNGTV0ER","deliveryContext":{"isRedelivery":false},"timestamp":1771030447487,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"7a5e73baf79847a0982c1daca21a6f5e","mode":"active"}]}
+Processing text: 建築課題ーレポート提出
+Success: {"category": "[ToDo]", "summary": "Architecture assignment - submit report."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600958464898105567","quoteToken":"F2j2rOvMI7v4RNRdBPRKLdRu4Oxg-IcoitMXExCKOH7GlGJ1CA23UC7j_Q4MSuSP3UA4GV6NZ_L3M34JafzelwWeeBZEfVqZpx9jDZOckC0u2lt90SLi_Pe3P4-JGsCH6JrNaTeJ68Z5OaZHpP-Hng","markAsReadToken":"kI21e3vtuKLjhIdmgCsSVQvw9dFGo1V36V0a6u76_3lIGfd5VjLV-g-Pt_hwES8cFyHDcXNLBcztCn_osA2HDVY7ik89fvBYoux5y5BHjYq6KvM9iWDnwzvMcUJTwcSvweEQdWrT4OH0CK9glRptzMpns6H539zDOx7uWaSnKSlfgq9AKJX8UL9DYtMf2k4osHe-KTJcMLFiM1-fM2j66A","text":"シュシューデート12時から"},"webhookEventId":"01KHCT8FV102R49P4GE6JBEPG1","deliveryContext":{"isRedelivery":false},"timestamp":1771030462263,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"9103a435a0354042b1bab984b6599176","mode":"active"}]}
+Processing text: シュシューデート12時から
+Success: {"category": "Schedule", "summary": "Scheduled date from 12:00 (noon)."}
+Error in Google Docs append: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\google_docs_service.py", line 73, in append_to_doc
+    end_index = content[-1]['endIndex'] - 1
+                ~~~~~~~^^^^
+IndexError: list index out of range
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959065019384307","quoteToken":"gXMOxwjwUCxYVPPy9TDuejV-tmTSYPzORF-_c1PIs04V73J0aXv9j_82DQog0hBwAQc6DlIgOdrxP1Q_7W1o9V-AchVlaoS2PvljSUKgcBC174DwimgTNEJPKgatFXQnMkJQX31G-PohKA49uPPI0w","markAsReadToken":"AYgAvzS5ma--hWoAddc8NrLXCSAfbYWT812cALQMRsCjwMIerny3mNDHxhpRHGQBoW-0HpuEoZM43vXvDSML1AWH0uOTLWkX-KKHGywUe_Sa_BzUQeNBetmheHGiGEqXCKXb-yhFLGstjQHLO6AbYTfimMp2Gm8UHqvnA86QrhLsqJch_ZqWbDG04I-MFwQLBozCH7r4zdPX2MijAimm-A","text":"ご飯ー12時から"},"webhookEventId":"01KHCTKDPF4PWE3ZW8XTV9YRXB","deliveryContext":{"isRedelivery":false},"timestamp":1771030820104,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"e221df0d52474d0091c268c80d6ffa5d","mode":"active"}]}
+Processing text: ご飯ー12時から
+Success: {"category": "[Schedule]", "summary": "Lunch at 12:00."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959112633384983","quoteToken":"xQoPEbTve7HUazslwh6fWKulXqxuZLb-tzIyCXzsVT1w-AKWmwwUT6LwP9PX9UClfJsC4v9cBtfQSp14SiE8UXTb2Cn2ZzR5rJksIKO2HKl5wuNsyTXC56k2CNd2haoqz7p5TtgIOoOLXD6SqkID5A","markAsReadToken":"KEewkdcH8QWmIt1Iz0Q4UiYj5v_wMjWnpSHssZMvY-9lHCRP9yay0Rh2k7e2-6XZ-eFyDmDZlrK4lUJsVnI-SEFL6GVsgcD6vietlIPp1AamK2t_PrpRpNGfiohvxgFko9MOpqc0GSicQD7vhzqnkMYJ79sZF-tZZjmUzYxO37rGR0-GQTZbcjKgzXkY_CElYNDQ7Xs0aJJvJy5Tt4x7fA","text":"課題ー12時まで"},"webhookEventId":"01KHCTM93HM4JEGCE7THFGE2SQ","deliveryContext":{"isRedelivery":false},"timestamp":1771030848518,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"c8b0886064cf4ad6a995a1b8311ac354","mode":"active"}]}
+Processing text: 課題ー12時まで
+Success: {"category": "[ToDo]", "summary": "Task due by 12:00."}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u725b\u4e73\u3092\u8cb7\u3046"}, "timestamp": 1625667243123, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "Shopping", "summary": "Buy milk."}
+Callback Error: LineBotApiError: status_code=400, request_id=40abb717-1919-4029-bdba-5a97984b62c9, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:01:55 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '40abb717-1919-4029-bdba-5a97984b62c9', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=40abb717-1919-4029-bdba-5a97984b62c9, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:01:55 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '40abb717-1919-4029-bdba-5a97984b62c9', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959322130481308","quoteToken":"NM3ziDJTqU7wdua37oYwAjnJkY_OGPXb4FXL3JIxKMkszHHIwEujxBt_3S6B6d2L8OAY8rveS4p6kuewwEzhaKKQ-6pT9Jl9J6qvX3fp1HMiGAqcmMfmu5VYj0VMbl1r9zZLVCQoTy-U_AsDMvp61Q","markAsReadToken":"K5f_uoCVQqtm9ftiCEXZ5OQDweHSCxEd6Bk17uTF1eQL8FZssp-Ey-e33cqZ-VsOtupYVz2DSUrlgqE8ivGhsowMYU2vDCF6FgLF8C7CizfVsqidI_gDUVbKZycECaP8qQPyk5euljqkg9TRQexnGmdTtaVEvnZVeWbz3KYwItip48YP-jsQxch91-QFVKggt7QMsEE0UJLBEovurkvwqg","text":"課題ーレポート提出12時まで"},"webhookEventId":"01KHCTR34H1Q85KJEKFS7SJBN4","deliveryContext":{"isRedelivery":false},"timestamp":1771030973350,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"34c07e4fb0ac4ab2ae36aa6ad8c45070","mode":"active"}]}
+Processing text: 課題ーレポート提出12時まで
+Success: {"category": "[ToDo]", "summary": "Submit report for assignment by 12:00."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959365398397155","quoteToken":"pDALey0Wi3xu37QNLXXcD4HDTBFU6FNQ31Ok5mplr-cbH295Th6Q86G51Ew8jYALY7RcKgibPEoLRCNugSq96WeAHi_MnYw23pY0hoGth3mRWyxA7Zc6GhJLon3D9QOyLPqjS2onFZ4ocECp2dfddg","markAsReadToken":"5IPWkp3FIPPfgv_hHhS6G4pXPfvlJ1j3YEGpnyqcCDC_zubYmR1sIdvpEhDA2R3OJNOlGFrLO2_wLJ8RXsdAO5y56_M4yn5D5M2fqkD5NQCfWvRS8zGoGc1gEk4kGbbUXYPcVqHTmDTCInWdYUaGIAha96m_t_PnqvkSuU64JsIuHa4tJL2YRmrZwgs3Mv9PVq-B8Q9oe3aCPRbN1V0IAQ","text":"ご飯ーカレー食べる"},"webhookEventId":"01KHCTRW4EAGFSCAJ99M70JTS4","deliveryContext":{"isRedelivery":false},"timestamp":1771030999010,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"e26c0d6cea25449eb3759bd31f376868","mode":"active"}]}
+Processing text: ご飯ーカレー食べる
+Success: {"category": "[ToDo]", "summary": "Suggesting or planning to eat curry rice."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959417693503850","quoteToken":"YDa7ucaV4kRdy4V8B1Tl39Nhtyi4UeLjMs0if3jaMvJ18IhFBQFnkf_pziWWUw8CNCxcZjn-OLkTRv3yRNGxXpLfWxJwlD0FizNUWIqelm8TMJtfbHr4fF6IjTDbtQClSu_2SkPjT-rRG_4ktlOSSA","markAsReadToken":"QalPJNB5RYQRsPPDpXCMqiCdxOrYpFoI9YvoU3_MhEW9EQ5iSRdoldaMM7ZJRrSeKo_VGbTGzShlKng79tFp7wJxmuaPof1ED5jHw-r3dP7N2khY07gj6F5swLC-C1RLje5ptmz-f6leBGMFaydEd1E2qJ5_OG7laAvgePmJC4K7NJsh5SQrD8HuNW30MBEJu9o0Wk8E2cuFDvHatquyrg","text":"ご飯ーすき家行く"},"webhookEventId":"01KHCTSTNR2PNAJHH8AE7BKF1G","deliveryContext":{"isRedelivery":false},"timestamp":1771031030341,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"9bae3f1b91fb4ec386b7b963ffbd8947","mode":"active"}]}
+Processing text: ご飯ーすき家行く
+Success: {"category": "[Schedule]", "summary": "Suggesting to have a meal at Sukiya (beef bowl restaurant)."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959450022937141","quoteToken":"UE8MMJAHbtnGHMxxEmCbFEmBo33iqYplKW-oK-jT79P6Z5ShsdnP9EGCTpmKfzmbeqEGbDopzlOuiCkCpFCTz8-B-c7l5LuzaX-IIGoJWc37dsnov5cvBrOefTYSof5z5yW2ENmkJx3pvDLvtdm3UA","markAsReadToken":"NQdweQ6lWvgdcRlkhOjGPKpnhOpVPg1oTmDF2ZIeDBDt8RG77BzKrqMnZ7GO5IOTKD2phdSfzpRQ0gE0ZxWJyV3B8lE3ROgdqxjWD1ncxDvY629BCvV44OVQauNBcFnCg3QUFfYxMmCStJQG2pzHLRQBrrP7Y-ixIg5PYj3WLkmidDCS7hkXJYD-uoC9RvwyZMhHEsK7qzLEZZawujWyxQ","text":"レポートー1/3まで"},"webhookEventId":"01KHCTTDAP91QHVZWCWG2NNNYG","deliveryContext":{"isRedelivery":false},"timestamp":1771031049538,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"4581d59c25484fcd8409f59da24e36d8","mode":"active"}]}
+Processing text: レポートー1/3まで
+Success: {"category": "[ToDo]", "summary": "Report due by January 3rd."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600959472739025305","quoteToken":"3WBF4MBwhgB2Mios5apvHH5-9QPyfBC87Y_6iRfB85mSMJkoIq3IlgB1TsMdZIqmLQlGDC_IBhm9UZoXLZkNMAOTan7S0cv4FQxjKT5IQgpypOsbJaZEdacJuCmd-p2o9WvJMLNPv4eJrcKLtWv9Bg","markAsReadToken":"xrWSJIrJxiwOQr1JCqSG-sjEKKn1nwB0-DtU44SyX8fVvlR2ei7mIfC46ar64Rqv7m4bHk7wjBtQWRWY0d0UvR0fxYoowW0oQ8BmEbIOeqeISdwBisrK9amW7bNrdZ98LNF9pkiCoeReTP5MNZP1wew3IpRvG6vB-o_3Wkz3IV094Gg3Lwzwh2vljIEjPT88gJ1dsPwUKoEJX7lvYOghgw","text":"ご飯ー5時に食べる"},"webhookEventId":"01KHCTTTVDEM5F7BH1MQ3DDDMF","deliveryContext":{"isRedelivery":false},"timestamp":1771031062984,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"a44e002c2fcd432093210d67030e9140","mode":"active"}]}
+Processing text: ご飯ー5時に食べる
+Success: {"category": "Schedule", "summary": "Dinner at 5:00."}
+Searching for category: 'TestCategory'
+  No match found.
+Searching for category: 'TestCategory'
+  Checking paragraph: '' (Raw: '\n')
+  Checking paragraph: '' (Raw: '\n')
+  Checking paragraph: '[Schedule]' (Raw: '[Schedule]\n')
+  Checking paragraph: '☐ Suggesting to have a meal at Sukiya (beef bowl restaurant).' (Raw: '☐ Suggesting to have a meal at Sukiya (beef bowl restaurant).\n')
+  Checking paragraph: '- ご飯ーすき家行く' (Raw: '   - ご飯ーすき家行く\n')
+  Checking paragraph: '' (Raw: '\n')
+  Checking paragraph: '[ToDo]' (Raw: '[ToDo]\n')
+  Checking paragraph: '☐ Report due by January 3rd.' (Raw: '☐ Report due by January 3rd.\n')
+  Checking paragraph: '- レポートー1/3まで' (Raw: '   - レポートー1/3まで\n')
+  Checking paragraph: '' (Raw: '\n')
+  Checking paragraph: 'Schedule' (Raw: 'Schedule\n')
+  Checking paragraph: '☐ Dinner at 5:00.' (Raw: '☐ Dinner at 5:00.\n')
+  Checking paragraph: '- ご飯ー5時に食べる' (Raw: '   - ご飯ー5時に食べる\n')
+  Checking paragraph: '' (Raw: '\n')
+  Checking paragraph: 'TestCategory' (Raw: 'TestCategory\n')
+  Found match at index: 200
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u725b\u4e73\u3092\u8cb7\u3046"}, "timestamp": 1625667243123, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 46, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Error in Google Docs append: name 'find_category_index' is not defined
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\google_docs_service.py", line 56, in append_to_doc
+    insert_index = find_category_index(content, category)
+                   ^^^^^^^^^^^^^^^^^^^
+NameError: name 'find_category_index' is not defined
+Callback Error: LineBotApiError: status_code=400, request_id=7c5b156e-f484-4f50-9ec7-72a9b1366342, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:09:37 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '7c5b156e-f484-4f50-9ec7-72a9b1366342', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=7c5b156e-f484-4f50-9ec7-72a9b1366342, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:09:37 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '7c5b156e-f484-4f50-9ec7-72a9b1366342', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u725b\u4e73\u3092\u8cb7\u3046"}, "timestamp": 1625667243123, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "Shopping", "summary": "Buy milk."}
+Error in Google Docs append: name 'find_category_index' is not defined
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\google_docs_service.py", line 56, in append_to_doc
+    insert_index = find_category_index(content, category)
+                   ^^^^^^^^^^^^^^^^^^^
+NameError: name 'find_category_index' is not defined
+Callback Error: LineBotApiError: status_code=400, request_id=acd7a3f4-0542-44a5-a274-3cda420b2a16, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:09:42 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': 'acd7a3f4-0542-44a5-a274-3cda420b2a16', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=acd7a3f4-0542-44a5-a274-3cda420b2a16, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:09:42 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': 'acd7a3f4-0542-44a5-a274-3cda420b2a16', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960186559234548","quoteToken":"0CKwgHvjbkw-IfuNgKQHYoOYmsHqiE3dB6KtWKbWyaXBRONGrSpWuRDo9Bvz_sTVcSl2Q6vWjIL2zMI8nItMaF7A7ocy2FEWVB6q8FEyq4mLQMPNNHy0GNnoUXNfLStIoKCNWayN7DuGWjnOH5uvMg","markAsReadToken":"be9wX3Vb6QtXXAAuqGCJIn35_EMT4OTjUosYIiMLZdv2lGd-LBc_i8NyP8GUx3sMYAnnQ7lE5wRz9n1XhOvsk-mPrxAuVJrVLZ1v8PG7nh9_PnNfThxlRCtdVWxw0jf6vl8-TO1iNBXC7nERXLGLYyAtykmp_LYQLPYqRmABrfpVzmzA8VJNXcy_0rZ6Gz2h-n7JCKhayzGZcq6wTrBdCw","text":"環境レポートー評価20%"},"webhookEventId":"01KHCV7TK2BWXBD9YREWJC8BEH","deliveryContext":{"isRedelivery":false},"timestamp":1771031488653,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"c888fd2f880c4fb6b1997c35d1fde125","mode":"active"}]}
+Processing text: 環境レポートー評価20%
+Success: {"category": "Memo", "summary": "Environment report - Evaluation: 20%"}
+Error in Google Docs append: name 'find_category_index' is not defined
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\google_docs_service.py", line 56, in append_to_doc
+    insert_index = find_category_index(content, category)
+                   ^^^^^^^^^^^^^^^^^^^
+NameError: name 'find_category_index' is not defined
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960232595914940","quoteToken":"1Ev02K0r6GzSQpJIpQjJPYvfrF_mk4uOW_JoIspANgGlLghLpkSA5LRlG72e7Tp13no6Hfied3VQQkOih-NviUTzHwbfv13ELC3-BkPnqluyKtQV_geHW2fGGOX_p8ZlBMxjFqSL4zd84DCId7GY4A","markAsReadToken":"D7Dp9j55KiNnmoMqJRPOhazJGm32cccvW8_pU2JikuptJY9ECcvC0OTvg3fcxZNu-ZEf1ZcVF4RmV5_RNhihCAsaD6O_xCnC35yVypP5FnYA4ib4DWm9ElahtWTVHW53cQAQPfEycGqlp3-h4dWUDl35a6FZ9dRW_w1JLZyKh3X9dVqIc8-7_NV65GS1hiYbLfA7fBWTHXXXM8IB570xQg","text":"ご飯"},"webhookEventId":"01KHCV8N0RY0P3KGR1WR4KW959","deliveryContext":{"isRedelivery":false},"timestamp":1771031515891,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"c4a98d0993cb4ccc8ed283e68c61a9f3","mode":"active"}]}
+Processing text: ご飯
+Success: {"category": "Memo", "summary": "\"Gohan,\" meaning cooked rice or meal in Japanese."}
+Error in Google Docs append: name 'find_category_index' is not defined
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\google_docs_service.py", line 56, in append_to_doc
+    insert_index = find_category_index(content, category)
+                   ^^^^^^^^^^^^^^^^^^^
+NameError: name 'find_category_index' is not defined
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u725b\u4e73\u3092\u8cb7\u3046"}, "timestamp": 1625667243123, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "Shopping", "summary": "Buy milk."}
+Callback Error: LineBotApiError: status_code=400, request_id=f0586c74-56ad-4331-9abb-3f21032b0874, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:12:43 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': 'f0586c74-56ad-4331-9abb-3f21032b0874', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=f0586c74-56ad-4331-9abb-3f21032b0874, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:12:43 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': 'f0586c74-56ad-4331-9abb-3f21032b0874', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960432228532297","quoteToken":"plc732ch4XUWffQJU9HaOIriDd4QL3GYV65FuvSiVKA8pgCcFF3EAXM-th5vEM03HvQRHZXm-Zd7k1fbfJgiAlGMzVVMFOPndDcxDZGi0SKyC4HTbtkFl_cvlivyxPEf4QwcVHWxQQq1ug7AaSEE9w","markAsReadToken":"huMri6itraPF7frPplyf0GAABIWmm-I6k0O6qBEdPSvbWZ9TXYQf5C1Xo3mSIM5xq9uhhfGhCxnvJ0VTbheHQZkrgMnRK_Lk03VBgjN93cPc7vo2Jo8txG1Vut4Pacxd6_w4iw0pCU29hGjzuIORi_pvgGRBdE-N18_tReJb3gkf0d76VnK0NYSHg7blFlp_XVsL1ZMKU2XVjMeDh_iDbg","text":"ご飯ー12時から"},"webhookEventId":"01KHCVC9GNS38N105FPQMGH11V","deliveryContext":{"isRedelivery":false},"timestamp":1771031634969,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"48455f9d737242b58e9fbf925c8b46e7","mode":"active"}]}
+Processing text: ご飯ー12時から
+Success: {"category": "Schedule", "summary": "ご飯 (meal) scheduled for 12:00."}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960481804419231","quoteToken":"XBuweCEo0Lz6seJ4qvIUtqyu0xKbY8Wjm-LPqQytctGNiSzZ7GUbmQkXp_lqA09l8EQMbrwjXlosl__XzTYIY8pOgyOyfoTIx70TtvOe01xrpIOcu-HraW0jwDR5PGzJjpjdoeAvIG6yn2dw6xUD0A","markAsReadToken":"HIVsBEG6T7GEzUKrKHAv8TUgzeznRY33Q8saiLxILGhoSvU7cJZ6zcKraRJgtOglh16TXp56o25ANVvreA1u7dvaqmMAe2VXS6jAWKaL6e45iGYQIRAUOqO0dcdsX1FSFCoRwxJnIzhHyyEANQVDgDJVBU7tFjljTJ60pHo-oLq5IvaRUyTJSMOjdFEEZ9Y-20yEwl-5jhWwg7NBqw0R7g","text":"牛乳買う"},"webhookEventId":"01KHCVD61GDDZESXZSJJ6CH8WK","deliveryContext":{"isRedelivery":false},"timestamp":1771031664513,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"d1b2a02cc9c34848a55d34d49a2a6deb","mode":"active"}]}
+Processing text: 牛乳買う
+Success: {"category": "[Shopping]", "summary": "Buy milk."}
+Callback received
+Body: {"destination":"Uxxxxxxxx","events":[{"type":"message","message":{"type":"text","id":"12345678901234","text":"牛乳を買う"},"timestamp":1771031823941,"source":{"type":"user","userId":"U1234567890abcdef1234567890abcdef"},"replyToken":"nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "Shopping", "summary": "牛乳の購入予定。"}
+Callback Error: LineBotApiError: status_code=400, request_id=76679441-6a39-4550-b835-a88ce11d1058, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:17:07 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '76679441-6a39-4550-b835-a88ce11d1058', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=76679441-6a39-4550-b835-a88ce11d1058, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:17:07 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '76679441-6a39-4550-b835-a88ce11d1058', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960816543695021","quoteToken":"u54WJDgJAq4_ujsBOWTATkRJZwI6K6KLsn7gzPGLXMLOaO427Nz6Z8OkwXRzeb7zcoPN1uq4wU7GQYg_rW5xOkRpHox--h_6rzkyV4l5bVMKs69JBpsHsjDgDgWDHycOthkvJjgRMTNAmIlN34CSbg","markAsReadToken":"ZxS32Puo-VcrZdTwRMDtTfCcryZZCWItRsrJGUwWaqrySnqQHtwvddpTvTEKS4ospiNHDKMgekd-hTdTc-aRpwMR6vziT2lYDqyQpMpQGg3Vmg-SnjpuD5K7SwuQejarf5wxqb3HYFktuCEW379SuM-3EZtJivdli0ERIY25JFnO-bYrJed9Bpkr6RKo4AuTK4D9XWzU4LMSNKgyi8GaDg","text":"牛乳買う"},"webhookEventId":"01KHCVK98JB1359DZ893WW5ACR","deliveryContext":{"isRedelivery":false},"timestamp":1771031864086,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"243d4bfb339d4c16a62bbf4b3b617a65","mode":"active"}]}
+Processing text: 牛乳買う
+Success: {"category": "Shopping", "summary": "牛乳を買う必要がある。"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960840233124241","quoteToken":"o6faHkaAvWnLlZnEdo3PxJ8irlBArc2XnLDMIx_vFaMzRWTMwJo58B7lZPXo0SJriZM6sVPJDuTKg81WBvndTLk7VLmD3PLLC_s2utYifDXvN8Fjp1AtUC0z4IrmbWm7jUZaDV3RKHGcmGmpAdw0Qw","markAsReadToken":"xpeMxr380fXT5xuR7gN61cJDiUdVVsBM5RNGs8ftu1j2vGCT3Ux4HhmrWDwkiWtSd35O2G1xO1cBL0GhdlZsLWW4q9Nm2FfXnXWkBnnXak5Ls0nhYMrSQW1V4M-Ajr-VsjRjjvSjEP4EPXmA5B_Dv8qO_jOtAoMuMiCaIvSlol8p5E2N7f8ZKajSEoHAq26kWHxUATrj3zlrkTO2RbxUxA","text":"アンコ買う"},"webhookEventId":"01KHCVKPYX0955WPR5Y0H3QMK3","deliveryContext":{"isRedelivery":false},"timestamp":1771031878205,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"887be510e77a4abfb94b0d68cbae16c2","mode":"active"}]}
+Processing text: アンコ買う
+Success: {"category": "Shopping", "summary": "あんこを買う必要がある。"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960849141825724","quoteToken":"E_2DE9hhXuGilYzs3TlZVpiHU915kO9crOC3b-lmzJxn55x_4sPWRdQ8mnWOPb-tnrpUVU1Q4hSzVVAxIR2c2K8mdWPEXCkNmZHqRimsnOK-qi9v5_vQU0jSPpYAr9aH_xqdlQ4YEUldIo4cAc3ntQ","markAsReadToken":"4D1O9ZZl-eYrGBcf0RnGbHTerHlds45vmHaywlKL8KnaGSJ2_iTZHrhdJtTaLQa8xoszKcyCkrUwxW7RkIgvJ3Lhk7N7WRBX9-ONK11b69npwKdmO-cIMD3_dkWjGNfMcqbSuZ4PskK7bKA4-KKZ0RvdajzZNXa8jPpT4-Zlg1lWjqpj-g-ma2VdZia5R5OeOvWxTvU0Gj_Z84mqTJxXcQ","text":"牛乳買う"},"webhookEventId":"01KHCVKW3HQP9WV3VWFSC7EGJE","deliveryContext":{"isRedelivery":false},"timestamp":1771031883381,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"251dc5732d5f4f509d77fd61633953f5","mode":"active"}]}
+Processing text: 牛乳買う
+Success: {"category": "Shopping", "summary": "牛乳を買う必要がある。"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600960856339513620","quoteToken":"Inv6g72gQ3dWY6-TcsDyjhlkU2XnpyWk-6QJonjrl3dOEVWaG56wTfUgr0qwS5lfThRfdzzanUkvZr__OlNVQaJY4y17KE_OLNdkgJq9RVGf6ZQh1_w0QccmrDiWdGYFn9De5J7Hv0H1Mk4uo715_g","markAsReadToken":"wSlE0dhGHx9klVA5qytJkVfW8QZ4lMSniaG7CnqRgtn0KfDSJ5XJ55SPTkO6MPPa4SevaMtUt25zUAZn_LBkU5sO5oEc6x4E8G9kxe29Y5hD-Ba3HxSqr1YBx7U4EvisMO3ZB6DqH_i9sbB_uk9hmYPBnMlDAgavrAsLt0AFm6XX4I_XWjwAxyftjHviPiTstmcUlSUp1k5oMDzchpx-GA","text":"りんごも買う"},"webhookEventId":"01KHCVM0CXG2DBBXQTEBVJQVNJ","deliveryContext":{"isRedelivery":false},"timestamp":1771031887789,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"6bfd48ecf8794092bdffe613889cb6e8","mode":"active"}]}
+Processing text: りんごも買う
+Success: {"category": "Shopping", "summary": "りんごを買うことを指示している。/ 指示: りんご購入。"}
+Callback received
+Body: {"destination":"Uxxxxxxxx","events":[{"type":"message","message":{"type":"text","id":"12345678901234","text":"牛乳を買う"},"timestamp":1771032114025,"source":{"type":"user","userId":"U1234567890abcdef1234567890abcdef"},"replyToken":"nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "買い物リスト", "summary": "牛乳"}
+Callback Error: LineBotApiError: status_code=400, request_id=7a0cefc9-968e-41e5-aca2-2d291be67058, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:21:57 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '7a0cefc9-968e-41e5-aca2-2d291be67058', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=7a0cefc9-968e-41e5-aca2-2d291be67058, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:21:57 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '7a0cefc9-968e-41e5-aca2-2d291be67058', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600961416094548413","quoteToken":"Puz8h-UMTrDZVEJ0mIa1mGcqRfYaofbpQsoK8OTsySaVBE28xio--EzE31N9pqesbs5tCAPGgAPMJ-s358uusw9Jvghnfewu3KO3me3xibvlulNWuPTd1kEK0deNB7HE9FGdo10VZ60cnrvDS1CleQ","markAsReadToken":"1Fmpi3bzz6-_narebbYXRxcLBCVgUtz63igC0lsMBgR4nNvaleIswd_YVR3NYiuYfcGSWY_uhzghz26Gy0Qkpivb8NKggCBRbCEyy8Xu_OwOcWglRctR1ESNa9nGVkphPssS9bnffS2-ToUgIBd8MwC9JqF-4VDCIJMUMDuHTUMSQkJ-KioGS_uO37cqksQsDtP_GsUmojW9EuLI3UZjzg","text":"牛乳を買う"},"webhookEventId":"01KHCVY5SF00T15QBEJ3288EV4","deliveryContext":{"isRedelivery":false},"timestamp":1771032221368,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"6657fceb6eed4717aee682f6559a5140","mode":"active"}]}
+Processing text: 牛乳を買う
+Success: {"category": "買い物リスト", "summary": "牛乳"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600961436764340568","quoteToken":"Kb_tUuiUlgVFBzSLj13XlTYS3YaBIRrJuFVKMC7yf7FL5kF8_0vIhhT6FiTyr4gsgG7wfXJ7b9twjb_xJHtHeYLP1obJlD7jCdTNxCRgfVfXljFPNYrxq3SP7aWCF4ml0wT-1PBFgPWwdUGBTfemXA","markAsReadToken":"6-o_erm8h8izTw1OXTSdx7K7OZb3nluPXU-XkilBNZzecUUArg8-vL6MxX6KIHcci4hiXwnLKwDKrKFXk1IqeOSsjFTjy5V_TZ_E8rBCU2lvWW9t7XRxy0nxcZz7WbW-iII2CHBFQ5vvtv-fzC5nLHRb_otbls8ecYY3PXA5VbxTUrOY9Jzd3Cw-_r1XvLDQyv6axuBNqTcYK4UWMtcCXg","text":"マックスバリュで卵買う"},"webhookEventId":"01KHCVYJ7FXMEZ6A1F5Q64PPGZ","deliveryContext":{"isRedelivery":false},"timestamp":1771032233734,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"a1181738e4524647b41d3681a0005603","mode":"active"}]}
+Processing text: マックスバリュで卵買う
+Success: {"category": "買い物リスト", "summary": "マックスバリュ, 卵"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600961468539863095","quoteToken":"bkrT3cY4g__84qdVZ8JuFAfIKyrOGBkey7UFHRmxA7KsHJAaFnSAXVGvFfWvDuEO27JUOR29fDcXwZJ7FtFtB9kAHLnzi6Qe4riJc8TM_JH8y9RG4jPuR4ZZFRisHciaczHmkg1hYmfzycSZvw2l9Q","markAsReadToken":"kS9mhhCbrkCTKqU7R76ALeLPzYTY19lfdc4INEAM2KsmRVC0NC1kJlVzpgETnnxik_wdTFN21y6Wkhg8NORrsM_j2KmsbYqnYPojiOtDDf4Vpk6-9RzOt5cQcggGnk31V0c9UCVQuydpI6u8gvCqjBuDFKId8jj4KWINFfMRtmFOPeOxj0j_1CIafNnb5Hld-usgLjcezOQlvx36qqRZ0Q","text":"卵買う"},"webhookEventId":"01KHCVZ4J9T72WERYJY3F3P6DV","deliveryContext":{"isRedelivery":false},"timestamp":1771032252668,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"6e8b4abe7cce4f019798f60d98cb5c21","mode":"active"}]}
+Processing text: 卵買う
+Success: {"category": "買い物リスト", "summary": "卵"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600961473522696661","quoteToken":"qCDf2HDe4lfu3ltW57WClBXYsgiOMtc6084qjuF5vDj1eShgTtC6uqR9RA5ayWO-UNRKC4AxEhwVLq_coIV_qvfw1H7Yg5-XMgCSbkQQInDlJjBRnN1dE9kkG8kL5MI2ezKFL6WHqm8Rmc-bVaOJGw","markAsReadToken":"CEWyKd0unFe4Lgcqqa49cNM3ecDp4h3sto8NYtD_tBeHr4ZMEbiWaIUGoQb-LuYHKJkhZRBMaaMJQyFtRt_PCPjx5Haep-E2UgJjLvNj7xGyo9kyKNnOsAriO44BxbNZuRYiB3yFyOP4Oi-HPhqsvvoWwv043dGWGeSykyhNqCQOMlHiu2TJ8oktFwxjEQer0PbxVqj0Us6qKuSjIGQXiw","text":"りんご買う"},"webhookEventId":"01KHCVZ7HPAVK737KT21YV350J","deliveryContext":{"isRedelivery":false},"timestamp":1771032255546,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"7f9c5aa44ae542d78fddcb5dec9f342c","mode":"active"}]}
+Processing text: りんご買う
+Success: {"category": "買い物リスト", "summary": "りんご"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600961512160362618","quoteToken":"9BEON02nnJWrvjNXLW8JydOif_ZjHECehIUhIX7twsXb9tOIhOhIKRBmUM-7qfG-s1dYnFRGpxy_UnFSbbM0lMN_yJx7NPOKarNt4nNLtgVe4NJwe5qJiYV8_DHqxG_VbvwOHLDZDwUvI5mfy8Rhdw","markAsReadToken":"kxgtOpbohhF-JDMpYiV1RPL0zKT-TzaAWOLEa_P8Jm2znv0sz1aSWVXWMGGFwC276lqK4Mr-pUsH2mlKjQ9It7Y7QC2BtLY32fXMyHdnPPe3pgB1NZolHI2SEudmYWxraYGJ6i9CVcYuPobNyV_PbzAy-ho_E_2ugVPhiW33NVg0OwnlQtPIAUo3oOqYxCTo8EyHQsk2fNB0Zh6vEP3ovA","text":"レポートー12月3日15時まで"},"webhookEventId":"01KHCVZY0Z6PT70YETCJ76B32C","deliveryContext":{"isRedelivery":false},"timestamp":1771032278647,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"eac4749f31d94143bea15c6179bb9b85","mode":"active"}]}
+Processing text: レポートー12月3日15時まで
+Success: {"category": "[やることリスト]", "summary": "レポート、12月3日15時"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962028445893004","quoteToken":"dm-t8UN5q8_dxdIPwIateGoC3QHCFKTVA5jwZomadaCf2FK1So_I5Y60uMM_oQxs_DqXW6NTFSPQT2pGtA80qgVgjalE2FikrEdFFb3P7VLBwJYuWOmF1YQV7KYYi9nVg1t6sYRNiTccP9H5ILIR8g","markAsReadToken":"ILb1Gpbsb_ejdt-tgyXLMa6BFb0NnYK8q_kj1IMxrxYuOrP3EfH54UFMgX5LmQ1e1mB6t_2gkwzGeTnr9Ie6I2P0IEhzi4u6sTclmZEeM2fa7gstDjEuLkSs8gHtbXbgxyf4VZPdC_VgxCJ3Nq9hwPLSZytMfAX_SqIiRgJLJwwAEE0Gf1SJA7flpIlTDhfeN6819jPP2W_qxA7dioqnFA","text":"カレー、買う"},"webhookEventId":"01KHCW9AC9DENAF54D4XE926RR","deliveryContext":{"isRedelivery":false},"timestamp":1771032586306,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"76f6f61368414f1b9575c443f852dd74","mode":"active"}]}
+Processing text: カレー、買う
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 51, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962062537195945","quoteToken":"uc6vpQqbKr-hLvdVzyk9Z3I8VdBfhN51BaiNERzdNiGwQUg08Wq7__-3SmfCjRstzAj9F6s3SCk29HIXdZeoUXl6WsxhTJF8RV_uTVg9-eV9NEKW7wcZ0GlnXZOxRS21slG98bau7mJ7vqW6ImCuBQ","markAsReadToken":"FPuNltGUaD53R07AN4qALQG-QXxx5Ad0aqy85M7-3xSgd4-hVwUfHtk9KcVJKul4byqRaBAZloALyWhx83CvnzrrBzeCiwdvt2OfMqJDhnbWSG5ZiWmVAX930gBofQ41dhKxLs72gXFWIADQbT1ew0OyPyqzIDFx7BL5PilJ8T_sbBXBLCfd1Ps4DR8Uo3_2uSri9ehXOSyoMDvxbeSl0w","text":"りんご買う"},"webhookEventId":"01KHCW9YGGZKA4F4B9PYY4D5CV","deliveryContext":{"isRedelivery":false},"timestamp":1771032606814,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"099a128d55ab42d2b924a07b0b9b0446","mode":"active"}]}
+Processing text: りんご買う
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962072519639568","quoteToken":"hhs5ige1pLYaiZQi2ogEUzwrSsK334if4dhizfU_sRHIwAF7SyF3N-UOi-ovHh3Mje0kLZOBDJ4_EDp2T8zcHflRXszcg7m2H_kLdvUfvI4iYWK-PH6ZWsw8KbNv5N-vElDr7qjBtYHAQLF689_scw","markAsReadToken":"Kg7X7vcqU05_fxEl4NIQZlzuvOjSVX1nj6GhpSOC-7g4Mvd5myuLXEAD3ioUfb_axnEnstui7OoKLa-uA3H4WI1BUr4ljDMcpdYuDHmVbPywNbPg3CCJB4aFWVFjL_L0mvLMwprFE-B0qfscDAzZrEHyOUysKvcp26mZx1hKcY4EuaMPR09d5INIvaoi-fcwvJ54m-eXjO_dR5_Ctyb-rQ","text":"こしょうー買う"},"webhookEventId":"01KHCWA46XK4KP01ZZV1WJKEVN","deliveryContext":{"isRedelivery":false},"timestamp":1771032612577,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"c13f17c6f8484481aa3a406bc30f07e6","mode":"active"}]}
+Processing text: こしょうー買う
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 51, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 51, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback received
+Body: {"destination":"Uxxxxxxxx","events":[{"type":"message","message":{"type":"text","id":"12345678901234","text":"牛乳を買う"},"timestamp":1771032795585,"source":{"type":"user","userId":"U1234567890abcdef1234567890abcdef"},"replyToken":"nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Rate limit hit (429). Retrying in 2s... (Attempt 1/3)
+Rate limit hit (429). Retrying in 4s... (Attempt 2/3)
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 57, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback Error: LineBotApiError: status_code=400, request_id=601f1cf1-8192-4a75-97db-0532dee02bce, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:34:05 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '601f1cf1-8192-4a75-97db-0532dee02bce', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 41, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 86, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=601f1cf1-8192-4a75-97db-0532dee02bce, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sat, 14 Feb 2026 01:34:05 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '601f1cf1-8192-4a75-97db-0532dee02bce', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962541308608775","quoteToken":"1h3NNR9v6U3ypMvABm4oYnhiqfTpbmv2SW7qJthsQyfWBw0BfrZqGheNtwuSfN4yqiXqgh_ZFlYphq8DdYjS951bfnP3SB263BrbVO3nAIRq679aoZz0X8BXPV5E4Bw1XAahpaqEqzo51qr08kPe1g","markAsReadToken":"zI6hJQfWObSUw51keLmCKcMXlXk98E3Tsws93FB5DnW12uKxVOVFLVau5yzES-Cdb59XsY4WBl1tDwts772_yhuZikcaBgckroZlqSXLI1CLxfYL04lJwOiSlo4zKnN1Gg52eo_Gsj8hIlMgWU_5bzgAdV8tgr2Zno3tNj-84Sy4jtdjW_3GFn7PuPx0QTBk47-e3HxN8UDHucyh4CJGbg","text":"りんご買う"},"webhookEventId":"01KHCWJMRSR8QFEWXKQ8RXMRB2","deliveryContext":{"isRedelivery":false},"timestamp":1771032892141,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"14cc4748d2434263a586e433dd4183a5","mode":"active"}]}
+Processing text: りんご買う
+Rate limit hit (429). Retrying in 2s... (Attempt 1/3)
+Rate limit hit (429). Retrying in 4s... (Attempt 2/3)
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 57, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962578604359957","quoteToken":"Wlr8zz5PV32KKu119fovdczGWW37-i8OII30di1BdnJ3N7CYww20iSpYWznODYHCMCETddC-TWDPiGTOB75-p3XZqX2zNS3mMeUpRvdoSfpO73I4nivxZ8kuPHiv1WbjFGfxskJJOPJEkoRQ5bX28Q","markAsReadToken":"W_zuHrwTgFCII4h8D2eU9XWoTAxBiMXoEoy8gnyqA508zujpwSU8gV0ejBgtOqaiPz064-7UKuXPacfBRP2dmWe9uZwkO4Uw_zHO0dQ2l7OWoAoFMThtv9fpsUiQcx12qCYsIuLoy69KCu9roBkvQttUgnUtedbSg7UZlFmXlhyJPp30QmbxY-9R_F7uAbYZRPpISma5oreh1ZruXITAcg","text":"課題\n12時まで"},"webhookEventId":"01KHCWKAHGV2CVJP18HAE1FADH","deliveryContext":{"isRedelivery":false},"timestamp":1771032914222,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"6f5f3258b34041b1aae8815402f3f5ea","mode":"active"}]}
+Processing text: 課題
+12時まで
+Success: {"category": "やることリスト", "summary": "課題, 12時締め切り"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962592781631902","quoteToken":"7GKwCl3NJUL2wP4AEZpQ7ekTr264Z_lc8IhQwHqhz58-wN06ScYQn4AhsZx2kTCW6iWJCMf8NS55vDCh8foJmYP13zvbINhYDKPjnFb_Wj07ykrtL8ixJT7HIGGg68a3OzUEVd1lEjbv7gL2UJqDpQ","markAsReadToken":"G2lCa7rMGgky2CAzV0R6gImaNI4kGZXJvTTChkMLMU491qfH8d7dkn3GNKWdP1Wyw54h-b7DDpMEFF4WnBnxrifXh4XTuZoY7Rrewl1ooJIfv2o1ROH6CaRdHgK4Q55TbSwsxm9BMhPePdM9eWkOc8jn27W6rcNlp9ZiXJkXiTE4mzenO4Yh36gBgEg309J5eBFVXYl12Uxpzqch9Qi9eQ","text":"りんご買う"},"webhookEventId":"01KHCWKJT6YW5TH8VRP1FN9AY5","deliveryContext":{"isRedelivery":false},"timestamp":1771032922801,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"cb0f6675cadf4d0bbefbff534e5896c6","mode":"active"}]}
+Processing text: りんご買う
+Rate limit hit (429). Retrying in 2s... (Attempt 1/3)
+Rate limit hit (429). Retrying in 4s... (Attempt 2/3)
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 57, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962635546755499","quoteToken":"rR-tXgNRNrXIRBGj_W24wMtAGmXVOaS9YMkIb8RvoTxDmud73cGj9gTuVCoeB2GY_CpLibaL-efC0uPiza-SD4TUBklC9agvPQF9GqA8ffzHCntRCAcxkWzAEtjyQYPNmDSmLH3oIW3k0xt8lzrXCg","markAsReadToken":"_6SHOtIx4fvnY5LxBvzinhGGnuAlJtysww3jvivPjycyduxaSIOLQc5R5Jbhyn4oIA8PzKEAV94KA5rMUu4MsbEzLeknCJXJI3UG4kijDJlKZI1CRGMVU_cviBcG5aWpKuwCTkkA2oque8gsJdUHooeIwYc1cKp_JeYu7C0IJgAZgcBsE3D0OaGcCxwM18RQxV-dFp0SaEUkpLF97AXU-w","text":"こしょう買う"},"webhookEventId":"01KHCWMBYK931GGHXSAA06Q16F","deliveryContext":{"isRedelivery":false},"timestamp":1771032948181,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"6c670572e8cf4fc485327323caba3877","mode":"active"}]}
+Processing text: こしょう買う
+Success: {"category": "買い物リスト", "summary": "こしょう"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600962645780595203","quoteToken":"DVLYyY0L2FT65ZQ1DoDxWwXUclBWkioQ2NplPa98uiKGY67v9ffR1S5i8HwlHWS-5jD1TOtx_6yHNEzW-ECApnltnohaDVB9BlMEl8sE-KdgZYK1XQpC6TlBk2XmJ8_kHIutYWE8oSVvzQ7V7Tkh2g","markAsReadToken":"8kRiiawcDxeaqALW3Ho5bNu3dImJF9BByahewGunSO_XoKght-8gv7AAemWJCkqoQM52Q7gGgrmfZFha-MeHzOKiwNabt2XWAfPdIJB2Di7dKsX77UVXH1LSZZS6syqujurKqOLggvdtyC6ejPBBjvseKZ34W4TG1Ls145irW6-qz8lHR4I58LsA0i8zqjMrZURw0jP7Fh24XUz3wx2orQ","text":"課題ー5時まで"},"webhookEventId":"01KHCWMHSV4K1B91N2NJ050672","deliveryContext":{"isRedelivery":false},"timestamp":1771032954409,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"c27cd8c304dc4862bfe1dedea27373d7","mode":"active"}]}
+Processing text: 課題ー5時まで
+Rate limit hit (429). Retrying in 2s... (Attempt 1/3)
+Rate limit hit (429). Retrying in 4s... (Attempt 2/3)
+Error: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\ai_service.py", line 57, in classify_text
+    response = model.generate_content(prompt)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600963014358990918","quoteToken":"EQu54wQqt2Iqg1KOwXDA8B938yktEojxs33bUSSmVy_uxNodV2HB37m_MwXcojb5WXANLLbfASyBvnu13EoLx1F4IFzIxfXySk1CG8T-kyAgYW7UhOfbn3HZFzP8X0aLHFrEG35K17lY7kVrd1IE4Q","markAsReadToken":"V832dtPYQ73iAB-XFSET4oPiGhbNWqmE7NoUnep4-dDb9m20Uwzxu0ma7L6vpV66R_r4oSMJv5Bf6915vpEQMwV7p07i6FMDOZzBZa1zl5w5cEowiJdCYNif5ovkKjW-WqcLz7PMYdU8Q8oXA2q5ks3ol15V3hl5TVobI6jpGld8n067_ICR4MD3uRlN8OYTbJ1L49z-3BKRvNcAyFnTfw","text":"課題ー6時まで"},"webhookEventId":"01KHCWV8HFYYS5GJP6XBHPB5RH","deliveryContext":{"isRedelivery":false},"timestamp":1771033174064,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"d21cc788f60a42d1995890439a71b190","mode":"active"}]}
+Processing text: 課題ー6時まで
+Success: {"category": "やることリスト", "summary": "課題、6時締め切り"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600963035750465624","quoteToken":"K1XwPKOUeodIjO1lhjXAIM-zO06FEWWcMKsDK_5DdAzx5qpmGCkcvDhiwPXALArZjjSpmzWprL2b7cM2zailXs5JfQWMfrCz-8ibTNf3KDJUW-C-XSZ3KcWQ-eAdOi8FFRRW_OOLIeksQmxLPtbiJw","markAsReadToken":"iKQOCUHS7Q3i4OixrVkiwFU2GCRVeS8zSF5qvbPkwoWSOm8Oh7CUBnWPIqo5AdtQKAqHHR5o2LLXrz4ygMBhCNjmBVf60lhgViQ0h7I_ZmmV-TpQw_GwzFVbatwJUUsKWYRtPJMWeqtzlwd-ZD5CKN7S8MvI-xseFx919_7XgOKGuNFH8K-eagCHbpYqfNFwFLuBbBDCw-lFgF_x7xZyIQ","text":"課題ー5時締め切り"},"webhookEventId":"01KHCWVMM8TDWR1CA2C2TBEXG7","deliveryContext":{"isRedelivery":false},"timestamp":1771033186855,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"ed35097cc3a6424aa2fe3f2e50155863","mode":"active"}]}
+Processing text: 課題ー5時締め切り
+Success: {"category": "やることリスト", "summary": "課題、5時締め切り"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600963053986513299","quoteToken":"zHIhtXfLQ0BidnS-qE5hdcWF_6-f5VzfkKq1S4v9sFLBgeXPeJL7yQLtwKTgvV7Wq8k5acmqWjslWzEUfBxFN_lqqxAabhfbtGBEgBYnmLSW_D0MFdV7Mi4SA2PbwZ2kcGTJFQTUp-68_NdgqJQGoA","markAsReadToken":"aujJipcmw1_uXxZjT81TLKP1fNq6oEJSj2pfUnJ4-CevBov-Rm38cJIxIe4bOF930dgKvjpGVTyXl-11OJslTw3vGlOfZDlo96QZRT5ocUpkigPYmFrNA0oEEw2pxnD9dIy32oCCH2enXZxZEWbxvHBWOTKCPTPTIkIS0PBeY_es6DowERbXkfwys9teAZDWgehrfrExOl-pxtAuBdxzDQ","text":"レポート5時まで"},"webhookEventId":"01KHCWVZC02H084CAFA99CK88G","deliveryContext":{"isRedelivery":false},"timestamp":1771033197617,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"fbd523727868443aba4eae2f46e55fe3","mode":"active"}]}
+Processing text: レポート5時まで
+Success: {"category": "やることリスト", "summary": "レポート、午後5時締め切り"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600963074891448561","quoteToken":"bX-5aii-o9IkzDbiYspasaNPcvfbdGjxmBej0MEZXXA-dpf14Gsn3nsSgqVRgq8iykStwigb3O6mwxzVQJFAFdknPZylbGoEMmfH2yt95Dx73jIy8NXkOA5OfG_vGdsl5fQ9xLkQHC8NAESD7Xa2Dg","markAsReadToken":"C5JuoFVm-aCottfLMZ1jKGY8cFgCkbKTIFbuY4IzSD_tXf4o7i7t8IdiKdzLN9Y4CqNdRtsWB_23C6zwWdhmFDhrqFrakfRZTUCv7QTKawfAYpizBgD8S-YCYWlYRGpDOqebvHojYVhzqMeB6LiJbGJJNIiFB8e2Sdtup9-ZZWy2hR9Dc9cJwo-YgQq6nghFLwcvwdkUHRlMXpk0hcpaJQ","text":"エスキスーもっと古材活用例考える"},"webhookEventId":"01KHCWWBJQK7T47FM8F5XX6JEJ","deliveryContext":{"isRedelivery":false},"timestamp":1771033210061,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"ae9452c0c5fb48cd82c1cb0ac5e194ed","mode":"active"}]}
+Processing text: エスキスーもっと古材活用例考える
+Success: {"category": "アイデア", "summary": "エスキース、古材活用例"}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u30a8\u30b9\u30ad\u30b9\u9032\u3081\u308b"}, "timestamp": 1234567890, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "dummy_token"}]}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u6a21\u578b\u306e\u6750\u6599\u8cb7\u3046"}, "timestamp": 1234567890, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "dummy_token"}]}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u8a2d\u8a08\u8ab2\u984c\u306e\u63d0\u51fa"}, "timestamp": 1234567890, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "dummy_token"}]}
+Processing text: エスキス進める
+Success: {"category": "建築課題", "summary": "エスキス進行"}
+Processing text: 模型の材料買う
+Success: {"category": "買い物リスト", "summary": "模型材料"}
+Processing text: 設計課題の提出
+Success: {"category": "建築課題", "summary": "設計課題提出"}
+Processing text: のり買う
+Success: {"category": "買い物リスト", "summary": "海苔"}
+Processing text: 12時に集合
+Success: {"category": "予定", "summary": "12時 集合"}
+Processing text: エスキス進める
+Success: {"category": "建築課題", "summary": "エスキス進行"}
+Processing text: 模型の材料買う
+Success: {"category": "建築課題", "summary": "模型材料"}
+Processing text: 設計課題の提出
+Success: {"category": "建築課題", "summary": "設計課題提出"}
+Processing text: のり買う
+Success: {"category": "買い物リスト", "summary": "海苔"}
+Processing text: 12時に集合
+Success: {"category": "予定", "summary": "12時 集合"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600963896269865240","quoteToken":"vlZ9sjGsRp_XpEUXzhzMg1bmyfjXvE8p2j47eRzAaaOLYkxYSgQ_4R5dXZxXwn0dWckTXa1TDsybTr-Md4rw3V6A3HnS6nqJGGsmseZZRaHHRdQ03V1YGz-BB3UF7E_gCEYZ18po-3KvGBIhbFmX0w","markAsReadToken":"VqDdsY_ZkymvLRj0Pn1kTRPPm7-pU--ZX1Z27xwjHrL92cyNZHX7oPHSKSKEiCMj5bwBQG6zwdXFDM_sPfLML6yN7aAFnu0vIFJ9znEqaGkQINs95Rr_viG8ChKaLfAYr9g8DADinpQdP_h5zR-YEtRwHodFjJF9IRyhBYaQFhwQ1Gsfe-vOi2FVOX4o5iu-haXHZcgEpgc3SVQ7cXI3bQ","text":"エスキスー5時まで"},"webhookEventId":"01KHCXB9HW7H4GS26Z9B97371Z","deliveryContext":{"isRedelivery":false},"timestamp":1771033699702,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"1a784e94d0b442e5b3cd5badd4cb4658","mode":"active"}]}
+Processing text: エスキスー5時まで
+Success: {"category": "建築課題", "summary": "エスキス、午後5時締め切り"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600963908249060000","quoteToken":"viCwWF3c9ODywcOOjuvJfrZa5SYaxm50hfDYUp_B1O25dFfL1JU8UYEAmOV9Nk9eAXxyDqjv5RZ1DtFxpp6d-kj5aBay133kZ13gfiZKSoctK5Aml_dG-V_b_ISF4jkeWEow_qxIaNMkJQsuCXjpKA","markAsReadToken":"cJhwvEYPFO-vJOgEQJ1nvym4FRpNvz2TcxsoT7xBTGCB35FVPh10RMFp39TI__X1P0bciLnDv15Q4tTizJICScEpWfnT8b71CnvePiziYLLboJiUda0Rrn69jRxSl5FLQETHY8uFft43WHJUGKFJB9ifJEjyb6WNYvED07Rc7n9k82LuJsjCtjVS11y0tGD5lOsBZoT6BQEAiFzfLPdUkw","text":"卵ー買う"},"webhookEventId":"01KHCXBGQ0KYHFKARJ67XX2KES","deliveryContext":{"isRedelivery":false},"timestamp":1771033706757,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"568ee9ce943f479ab4ad79ea14d2569d","mode":"active"}]}
+Processing text: 卵ー買う
+Rate limit hit (429). Retrying in 2s... (Attempt 1/3)
+Success: {"category": "買い物リスト", "summary": "卵"}
+Processing text: エスキス進める
+Success: {"category": "建築課題", "summary": "エスキス", "reply_message": "エスキス進めるんですね！課題ファイトですロボ🐶✨ 応援してます！🏛️"}
+Processing text: 模型の材料買う
+Success: {"category": "建築課題", "summary": "模型材料", "reply_message": "模型作り、頑張ってね！🏛️✨ ロボも応援してるよ🐶"}
+Processing text: 設計課題の提出
+Success: {"category": "建築課題", "summary": "設計課題提出", "reply_message": "了解です！設計課題ファイトですロボ🐶✨ 提出頑張ってね！🏛️"}
+Processing text: のり買う
+Success: {"category": "買い物リスト", "summary": "海苔", "reply_message": "海苔のお買い物ですね！いってらっしゃいロボ🤖✨美味しい海苔が見つかりますように🐶"}
+Processing text: 12時に集合
+Success: {"category": "予定", "summary": "12時 集合", "reply_message": "12時集合ですね！了解ですロボ🐶✨ 忘れずにね！"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600964865019871677","quoteToken":"RMkO-PsvasECZIEt2MCUpfLlELuADcWFg1WlRKT6JQMPHntXkNiNNhlS1aX0blylF6tPikqI_X2CLV-CDWSeJOLA2EZQVm8Lb_tQsbaVGgFnUabjG2r6mBRy1TN6lfpIVmGS9PRBRVcMC__GeKORIw","markAsReadToken":"uO3pzflTKf5inp9RcZFXC5Xj6KXonKBsEah0WzwWkvsBpvxxytpmbtykv42GfzIQC2j3WSdojZSgW_XKhECEg7dDry966h5kUnuBpvq136JMforWyvXgK8KUCSUGQaMzx4TvsSxOvw3r4PHvZM33c4HXFuDVDK3JViwcrwLObcfaKfLOo_AeRz7J8yvElNp9PnhB1NU0l1XFoo9Wk1sK2w","text":"買い物ーケチャップ買う"},"webhookEventId":"01KHCXWXHWN3SRETPHV7MYGVHR","deliveryContext":{"isRedelivery":false},"timestamp":1771034277192,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"64e05f0d00f845908de749f133872094","mode":"active"}]}
+Processing text: 買い物ーケチャップ買う
+Success: {"category": "買い物リスト", "summary": "ケチャップ", "reply_message": "お買い物ですね！ケチャップ忘れずにね🤖✨"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600964897970323977","quoteToken":"8rIpFG6oSFof-vS1QqWWqn3CXzx1oPmBW9yb-zxLV52kiEeJSqxew0sR_Lce_Yhksfgx4cFYZbVqqzzOKwBGK4bHjguCMacRLJIC9Z0pK2EEjw_mLuVWLKH_WX-BF62c9bg6FCZ7mts8q6N3YT84vw","markAsReadToken":"qc_SWAHEF7i516Iy9vj5iFds2k6-oECmleixzzUJMbo0mGrgLcnBq_MhKgzCdTrK22Px2-18ime24-L6I81XAmpWXL9g9XANrt9vY2gdtl6cW2maNGrdRRQPMB6NuhNAVUoFXQKnzcDxHbckK-X3g1-cBc5F2F3t1TRyyE1TAFvWsz8Nok_8ipk-6EoI5zn9sGkYjjo48KfVPkjpJrc4YQ","text":"買い物ーケチャップ買う"},"webhookEventId":"01KHCXXGW9HTSTS14BG1WRTY36","deliveryContext":{"isRedelivery":false},"timestamp":1771034296717,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"c90e2734bb5848668f64ec09603f45dd","mode":"active"}]}
+Processing text: 買い物ーケチャップ買う
+Success: {"category": "買い物リスト", "summary": "ケチャップ", "reply_message": "お買い物ですね！ケチャップ忘れずにねロボ🤖✨"}
+Processing text: エスキス進める
+Success: {"category": "建築課題", "summary": "エスキス進行", "reply_message": "エスキスの進行、応援しています！✨ 無理せず頑張ってくださいね💪"}
+Processing text: 模型の材料買う
+Success: {"category": "建築課題", "summary": "模型材料", "reply_message": "了解しました！模型製作、応援しています✨ 無理せず頑張ってくださいね💪"}
+Processing text: 設計課題の提出
+Success: {"category": "建築課題", "summary": "設計課題の提出", "reply_message": "了解しました！設計課題の提出ですね。課題の進行、応援しています！✨ 無理せず頑張ってくださいね💪"}
+Processing text: のり買う
+Success: {"category": "買い物リスト", "summary": "海苔", "reply_message": "お買い物ですね。行ってらっしゃいませ🥚"}
+Processing text: 12時に集合
+Success: {"category": "予定", "summary": "12時 集合", "reply_message": "12時集合ですね、了解しました！✨"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600966565273534720","quoteToken":"QcYeJtVi8y1etxkHtz4BJKTCfpH8xDE4l5NkOXspnaDFRXkSV3irXiNw7MBOZ02PcZSe5SqA_eGQ1lOZsaegunFbn5nhLkuSPzScsk-euSERO0qrIwJTiLO_oT-FKv070o4Atg9eMufGdvqAfgDOtg","markAsReadToken":"i503I4sx6OP-_TpLQwNxo7J25VZjRvRgdGbnEwHWD-oE5TM4CXSsTmIEgbfWHXqBXPtYlJv_5-QpM5JZ2PGMvTEyUcqtPrMXmPfZyDcna6013FDCSOb8DP1YdkJnyjrYb03CdzwZctXFKIUL29m-o2GREpPuxJd8ENHN0b2OVHo5cGRavpmTbOsFmevUZhh73-scCjOaOfTvQqMS4Ur8Nw","text":"こしょう買う"},"webhookEventId":"01KHCYVV3RF38ZEYHXMGGK5BE1","deliveryContext":{"isRedelivery":false},"timestamp":1771035290461,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"d3b765c40af94ba9b97dbf6e360b3987","mode":"active"}]}
+Processing text: こしょう買う
+Success: {"category": "買い物リスト", "summary": "胡椒", "reply_message": "お買い物ですね。忘れずに買ってきてくださいね🥚"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600966582134899200","quoteToken":"RVgSZTo0akmuH51PB224qtzoc5NFP0hj6x3q1V965UCI-KC0BrOHM2hAI3hMWWV4vYAkZH2bBPthn22HL6Sas5cWmcEvKZgZqJy8Stf01AQaSHvE-ZFlDeG5_WMoMLLx88l-cux7mS-MS56xtvCOsg","markAsReadToken":"mcNLCJCGRy8zYppwQpFi2uc1Iziiqc4JVF59L3jglFRsq552yoeJdg39z4vfI76KLXTPmgx0nylKBqDqT7rSDubiPN9guXxWBhh4e4a45rBODOQvCHXi4FKLseNspGk-zsijv7wLHjAC9sD6ZuIRHaODUbyqB_clrJucnSIq2s7nI-SMzacGvuW1qpIz5N33EJo548wYBZ46bjeiPC2Vag","text":"卵買う"},"webhookEventId":"01KHCYW5297G8EVX88WY8RN5S1","deliveryContext":{"isRedelivery":false},"timestamp":1771035300538,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"1d944cb7781f48419834408f109ed3e3","mode":"active"}]}
+Processing text: 卵買う
+Success: {"category": "買い物リスト", "summary": "卵", "reply_message": "卵のお買い物ですね。行ってらっしゃいませ🥚"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600966759452770987","quoteToken":"2cg9FVrtloQ0XrjypKYGywMV5FIuwXmjmvGgDclSNOFiuiQDbkCx2j1PFfRLFEqlMhqv5G5ial8vtnSxW29d9KfZBT4fRZjJbkRJEoxy-I8woRW_uS9KhnqV7_3sQDxFFe3bTcAhppgEQhe70I8zsw","markAsReadToken":"VLR1FpKoExDJiUkQ-INCtUiQlqPapamCCkv4INInKYj5mGpVAFb_4oExPSKVkfYntrmC1c3p3UqAQKgIo3jDZY2QSIp9B10ghAEfrk1dzzlyf9A6iWuxV-b7NaKa-4ZQmEBYL1XYnb3bj7MkE4XRBpZDglEd0B9hNGfGfPHit6Be6DHooqcllUQl9QZhFS4AREfnAjiVCYgKU_n8oH6Gqw","text":"卵買う"},"webhookEventId":"01KHCYZCFRDEDWCDTXQZ68R6JD","deliveryContext":{"isRedelivery":false},"timestamp":1771035406330,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"836f419485c44734beedfdaaa3185dbe","mode":"active"}]}
+Processing text: 卵買う
+Rate limit hit (429). Retrying in 2s... (Attempt 1/3)
+Rate limit hit (429). Retrying in 4s... (Attempt 2/3)
+Success: {"category": "買い物リスト", "summary": "卵", "reply_message": "卵のお買い物ですね。行ってらっしゃいませ🥚"}
+AI Service Exception in app.py: 'cp932' codec can't encode character '\U0001f95a' in position 88: illegal multibyte sequence
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 66, in handle_message
+    print(f"AI Result: {ai_result}") # Debug
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'cp932' codec can't encode character '\U0001f95a' in position 88: illegal multibyte sequence
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600966794064429369","quoteToken":"bVpN2n9bI_t2Z3ari6JUQopE4Qg9Dnw2DVnkDhsG-fVemDlDs_n1PMYxnIWctLH_EwLEbBKOCzhtHLLPT0sDf5ZscgO7pL28mQ5l9Wv60AYJqdeVMQuB9wZAU4j7HlQEBCE5LpGj6p3KP4S-2XABSA","markAsReadToken":"tePBaWJbCVn0_eZEeXsBamDthOGjuX6mSx8ddQUFdR9AEWvuH7Ww7YCyFYaZIFGnnxrVVzOvJtla7KWw0AbxUBiXtNSDjh8-Je-aLKbJ98fcCvukMIFnpQ0xeWGH8nqJNwf7xaB9BrH9fBtSnTLV8Lxn79GG7j5I4m2e0iHbUzjU2AP8Nw0vEnSUP8Rc2vis5naU2vynD4G3qTeMTif19w","text":"こしょう買う"},"webhookEventId":"01KHCZ00FJZFC0PTP4RN30ZCYZ","deliveryContext":{"isRedelivery":false},"timestamp":1771035426859,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"3a7c415510be4c3bb52fd12eb2387b7c","mode":"active"}]}
+Processing text: こしょう買う
+Success: {"category": "買い物リスト", "summary": "胡椒", "reply_message": "了解いたしました！お買い物、行ってらっしゃいませ🥚"}
+AI Service Exception in app.py: 'cp932' codec can't encode character '\U0001f95a' in position 93: illegal multibyte sequence
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 66, in handle_message
+    print(f"AI Result: {ai_result}") # Debug
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'cp932' codec can't encode character '\U0001f95a' in position 93: illegal multibyte sequence
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967030002155608","quoteToken":"-rGSYqhytSnSZZez2m6QoXk02IDbV6YqXvLuP_ZY6aVqyvJiLoZQ04QaIyHIiYRYYLRPowahoNBiOm_Hlfma0K7Ilvadg7Pvdl77V_UXXr-EFrKSesbagc9_EHPk5y4WKpbZ15RkxNSYLm85usYHOg","markAsReadToken":"RLjiVl6MsrTUGMveiM9piajnS0yo8ayFjzqlKIWE675NLnie7EQxwJHXAtEUSyatiP6o3WEHVCPpUpO8cCzeVNTgCUe2b88VisdvyTwJfxa8fgSTZfQc1xBEv8pUHyg59HIh5K0EIOLWsXjlIVRJQs_Cu-NVRlmMVE8sRpDyg_IC74s5vvZWDpOJE-Vj5oYdCJyhYpi7Yy8IIkhJKlTq_Q","text":"卵買う"},"webhookEventId":"01KHCZ49KSRY9YCHYVGJ4NS8G8","deliveryContext":{"isRedelivery":false},"timestamp":1771035567581,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"a6a1b847182a46b9870d9f676b11ace9","mode":"active"}]}
+Processing text: 卵買う
+Success: {"category": "買い物リスト", "summary": "卵", "reply_message": "卵のお買い物ですね。行ってらっしゃいませ🥚 献立が楽しみです！"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967052416778572","quoteToken":"BuYlW07bYzOTfa3ucEBCPP9V1TcfR622MxfCEKqJW1rWm5JhwIYqFkYArB97dT-S8nmz5vYS5rRCOO5j1hpo99_8wfoIp7AApoXE1eu9HBgztHQAg7XZw9JHrwg0EzI977Jy_Veg9gynpo6AxuL8wg","markAsReadToken":"nQuYkAiBH0RxdaNNaAdzCcPNFtNl-3yv3IvsGsoXCsuqk0g3LFqY1rv7P7-0PCMJDXvV0tQkiZGYyUhd5NYCtB4H-i6TA-e5sRhszvNtQjheUm-z_xGtFNVNuqJfbt0Bg_wYX47zDFkx9pXoWdyyNVx1KPyGbR8Au2k-zHAtnDNijSWedyaAmD43DiXEqWnyUmrLoYYgdHYEbQer3dhonw","text":"ドレッシング買う"},"webhookEventId":"01KHCZ4PV04KZJZ7SF1X7TN261","deliveryContext":{"isRedelivery":false},"timestamp":1771035580823,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"496b68679b374c3c9b5559156f98b63a","mode":"active"}]}
+Processing text: ドレッシング買う
+Success: {"category": "買い物リスト", "summary": "ドレッシング", "reply_message": "了解しました！ドレッシングですね。お買い物、行ってらっしゃいませ🥚"}
+Processing text: ドレッシング買う
+Success: {"category": "買い物リスト", "summary": "ドレッシング", "reply_message": "了解しました！ドレッシングですね。行ってらっしゃいませ🥗"}
+Processing text: 卵買う
+Success: {"category": "買い物リスト", "summary": "卵", "reply_message": "卵のお買い物ですね。行ってらっしゃいませ🥚"}
+Processing text: 牛乳買う
+Success: {"category": "買い物リスト", "summary": "牛乳", "reply_message": "牛乳ですね。お買い物、行ってらっしゃいませ🥛"}
+Processing text: エスキス進める
+Success: {"category": "建築課題", "summary": "エスキス進行", "reply_message": "了解しました！エスキス進捗、応援しています！📚✏️頑張ってください！✨"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967232319127572","quoteToken":"DkpW-eeTX92iXO8MIuYkg91DB2gxKMQcGHIWMk_96uAhfjISQ4ZQO30IlPwMgBt6mSYfPPbwnPJA_nl5PhqIlA8rZ6rtAyK75IIizM_Pr7OZqxzKjspEvQZIEccT6fxW5ryCA5mxbhtNhJtZTb_LLQ","markAsReadToken":"WGMhtZDMhjk-M5ikOdCjWxVi1uUEp51kWxRkTKVJKyxQoX-9rD3DOcWBWOlDu3-eip-tmS8OCcRxkIxS2uofHV_wvvF08eiVS028HaytUWBhb_AHPomifErMTyYjS6NFOkviVKcjMO-Nv-MxCPDRkswH8_h3Nll5eet4KbhlRUr2URx-BWA2NeXNejaEir_MdJV7Z6mzzsuwbF1-K2ALSw","text":"肉買う"},"webhookEventId":"01KHCZ7ZMH312T0YYVZA4W793G","deliveryContext":{"isRedelivery":false},"timestamp":1771035688084,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"0b72cf6f96be4f5fb8f76278c9674a89","mode":"active"}]}
+Processing text: 肉買う
+Success: {"category": "買い物リスト", "summary": "肉", "reply_message": "お買い物ですね。🥩行ってらっしゃいませ！"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967244818153780","quoteToken":"deHxAbZMHCAM4MD4N017y3nxxXxqVAFLtMfJF_nA0inOgStXTovRawogCPtcwBO76YK2_1n2sW-amizk4SV7ex6lShbJGPLX6lSzdvSxnO5EmxUkElzDAn5e0uLvenrJyGncteUdwSlx3UWOlv4VXQ","markAsReadToken":"OBt4dBsyvDk3APt_nSjit7PW99yEZfhbe9a6bd9E-HQX4SLiME6HVlPw4FukohndT9EKeKhf31fKnvM3bnlEKBDNZbIupg4rpZu9MjvJvWMW5DUPPY9TjZ76vYUKn8ldVL6vVqL45Q0SsF6kQiu7S1vy402JGInvt7a4biTFIlyYgnxMYRqbJBMPTtFMN0sQunLaNbRIuJZ1K3J11BYS0A","text":"鶏肉買う"},"webhookEventId":"01KHCZ86ZTV24D7JB6HW4TYBPB","deliveryContext":{"isRedelivery":false},"timestamp":1771035695612,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"aba9d937491a4c788738aa80a5a36b3f","mode":"active"}]}
+Processing text: 鶏肉買う
+Success: {"category": "買い物リスト", "summary": "鶏肉", "reply_message": "かしこまりました！鶏肉ですね。お買い物、行ってらっしゃいませ🥩"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967253743370521","quoteToken":"n9qnzoPluagA8wU9za_yJvHrKhQ_mJap7yOUTVFfJJxcKEU9319XgkPh9vF6VvkKbqf-9knXfb8g6Z1722GS9s_KX7RP_Wvu9Qk8a9vZYeLxDS3FV6udlw8ryEhl40a0DFoWIBPB7DkVjHyqV6U4_Q","markAsReadToken":"xtzvX3-uiL_N_tMHxkW-svFDza2Hv6t3NtOci8JGQer-SxelLIpyhLyhnfEnwm3cCxooJ__bM-hxgasSgbAwICs4hLe3f_nKDWS76XEQGL2CQivwlKqHerqKaWZRe3u5-mhP9nmPiNTSUVmYEc1XXL9820f-nBooYdVZGkI2FgIZkVQq0bXz3ZlHrRp8E0RzO_GZqw5Zfs_L2dURgjekvw","text":"鳥買う"},"webhookEventId":"01KHCZ8C63M38Z74G7EXZ2TGWZ","deliveryContext":{"isRedelivery":false},"timestamp":1771035700934,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"8bdc870b37c2464a84244e5f2b0ba1f4","mode":"active"}]}
+Processing text: 鳥買う
+Success: {"category": "買い物リスト", "summary": "鳥", "reply_message": "鳥を買うのですね。行ってらっしゃいませ！🕊️"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967273272311946","quoteToken":"1LDZcf5HkyZz8X-6ISpgm-6q7jovkKx-8euk3YMRdoqv76yoPXk4xzNfxHNqt0SLFHQf-FbMWO4wf_JoieY0hQLfJ2Z87HjG-RZsqNZ7qxE2I1xYBM0xaXeExw0FWa5SBHGh0kr1RUUff8ibX2F6dg","markAsReadToken":"DnZMBustUXrieZcUqg43gJ13wEwY9WH7Dqh3xFHY4SerqrbDqut7gCZOhng05_TTFC5jDpHR_L-Ovecl8a5zVIaAMvz9eKMP4HIrH0k-9typYbApGpVkk5HEZB3bA1NT8veYWz3CEoIUvV9Hwf6sLtwlR1eXFC5-JxnwKQjvT0I4CSq8iZ8J2tnlxG-OvKV7YWMUHKK4wdIcOx3uye0WVw","text":"エスキスー5時まで"},"webhookEventId":"01KHCZ8QAC6S0TBDAT12XFFBFF","deliveryContext":{"isRedelivery":false},"timestamp":1771035712516,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"b3d8f9c0383e43cd8571192ccfe71636","mode":"active"}]}
+Processing text: エスキスー5時まで
+Success: {"category": "建築課題", "summary": "エスキス、午後５時締め切り", "reply_message": "エスキースの締め切り、承知いたしました！課題の進行、応援しています！📚✏️"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967294109352352","quoteToken":"y0LaC7yEhBL9B8Mgbr5H-xS662rflyWBOtGLYwKeK5AsN8Hg6RSWfzsRGON3wsRMPL52e4Kn3Jh5NdiGcDAuRJE9-NWE-EStBm4Ty2f-Bn0lLWvuflipXzq-Yj2Fj1fFnLynDO5V3m2XnEQfWT8vlg","markAsReadToken":"EbK53FBmykABSd3FzT3HYZdV1Xa0ynW3fTZpxMOZPoIMGTwXyMQuUl8IiErKVsZJFSFTDBuxel53HxydvzeupRazZs5uDpOosR2AUpdHUAONdp2CIX6Idbr3oFxp39JeylzqF-YBzjSOVTKgJZ7pbxeR0TLdPiqX9i7Zj71ll1sKrolzv0IG-Oi4CntQC-1S30m5vDiYMgXe029oIYZJ4w","text":"エスキスー模型作る"},"webhookEventId":"01KHCZ93KVB7GJ883JDN7Z5RQ5","deliveryContext":{"isRedelivery":false},"timestamp":1771035724925,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"659aedbaa47d4098a10b69ddffde1330","mode":"active"}]}
+Processing text: エスキスー模型作る
+Success: {"category": "建築課題", "summary": "エスキス模型製作", "reply_message": "了解しました！エスキス模型の製作、応援しています！📚🏗️素晴らしい作品になることを願っています✨"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967313402888483","quoteToken":"EydcnOlHZI9eC8LSTSYLJ08zZleXYuXzbBnGZcKTdQwiU4a8sWsNWUPaTuj5Oy-z3WEA-7Z5N6U1gNfMmmF1tO9cbUxkMIGAQH7m0Plo1t3uMl6WFHKHd3W1lSiSPfW9pA2SmOmksJNpmGUGMdCGcQ","markAsReadToken":"md7YJBKvTS-eFu24IFuLka42Kx-LT9ECR2J_bbtJwM9J0BAeo515XN-83TRTrwsGgRS2X8me1m_cyrBd1OyTPTcftX11A0Iyv0iZorFrLjAuK2SbcpgaiMZyyFHiR1qpg0cfk3yctENC_7cqp5TBb-RRW8EdutQAlDg_1YpxeC8-g11CxC629N-Xd8W5XnsuIyo2Ui1-qVTyyjJYnxTvNg","text":"建築設備レポートー5時まで"},"webhookEventId":"01KHCZ9EFTK0WSEMNZXVG0S3EM","deliveryContext":{"isRedelivery":false},"timestamp":1771035736556,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"b8c14cbf6a644b7a93ab12114a4c313e","mode":"active"}]}
+Processing text: 建築設備レポートー5時まで
+Success: {"category": "建築課題", "summary": "建築設備レポート、締め切り", "reply_message": "建築設備レポートですね、承知いたしました！📚 締め切りまで頑張ってください！課題の進行、応援しています！✨"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600967989860762066","quoteToken":"uOK0t74dhYBuLuNB3ncfyltefv0qEU6dYl1VL_HDHxVoagt3LrmTAj_eVS6jF41KmGoZt9mVLnBCh5t3TdMHZDy828XYf4M0kxA83NPcHMM56LO9YcUwaUgTCpXs3ckxyOTw4eryD2P_uFZdlZgPJA","markAsReadToken":"OPK5oHo13yybz64zt3aAnDQZooVhpVKGgEd7KH9UUVUOone3QET8JAJKufRhw7hzfVS7WJh6w_5FTRNgEiZMvZNh5EcMgjecNlHm008AEw5F6RPSK_u9rdEQyK9IZ8FDP6mPpgg8rf7V3wNwInFy_L_NRoteJRo_HZS9aUwj9d3mjeE-LVMz6DAelbQ71ENAJq3YkMvjwdt9JDMOuWjibg","text":"シュシューデート12時市役所前の公園集合"},"webhookEventId":"01KHCZNRBC87SY31YPFEHAMXCQ","deliveryContext":{"isRedelivery":false},"timestamp":1771036139728,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"594b4fd013374cd896b880490f48a098","mode":"active"}]}
+Processing text: シュシューデート12時市役所前の公園集合
+Success: {"category": "予定", "summary": "集合, 12時, 市役所前公園", "reply_message": "承知いたしました！12時に市役所前の公園ですね、かしこまりました😊 待ち合わせ、楽しみですね！"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600968105069642312","quoteToken":"ZOIXdepyhSIO12sHFXbdvH1U29n4KLUEGnIZh08NiokUvsbSCRSoRQ2z_WxR-t-OSvzqpkwyU2lGaRHitwc7ImqWomGcKD2vvtV_PjLdq-KdrIJqQki2syaRWZLf-8HDAezTkR1mvx0E6z55xhCitQ","markAsReadToken":"BJwbuaLvBpMCGbmwfj7Cx6nxMCVqU9No4HOdEUf24wuxwLT3uYzdzBR7jNZHLjt49hsld4uISYxzxxAJP2j7jA-Gm07qYK-h7ua10Zc9hhghUX6UP9cjheyv30zAKyTob63L84tF06K53oodwMHEdMvZASC6h8-VJ5srsQYcd0q4lkkb1xojdMr3FIC6PQiQX-JP3JefxrSre5kagaZmPw","text":"2/24（月）までに進取の精神学生表彰のプレゼンスライド作って送る"},"webhookEventId":"01KHCZQVKF9YH29S7BNP49RKB6","deliveryContext":{"isRedelivery":false},"timestamp":1771036208285,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"e132a37ee0e74fb7bd42cea3657cef02","mode":"active"}]}
+Processing text: 2/24（月）までに進取の精神学生表彰のプレゼンスライド作って送る
+Success: {"category": "やることリスト", "summary": "進取の精神学生表彰、プレゼンスライド", "reply_message": "了解しました！プレゼンスライドの作成、応援しています📚✨"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600968146526667184","quoteToken":"lZgaFbjkZMUbQoWQELRWWQeCYbSzbvcNI9OwiytTv0znN8bq0TT6W3anuOOTbSISThe-cu-0bUgVYsFXQNJS4d59YYCKg1zw-xq3JDsKi8UDsX0NdaHVl7MngV8tBAZkWi1SvugcZGc-2ZASggUPIA","markAsReadToken":"IWHfcIGcGIkO9iSMNhmIDISXOV8CJpSugXvfHmwH4xkvT1CZEU0EHMjHWuZBgqKJsBNn213bkhojDMhwy62BIHi5Lho-MOLfJAUK_1uN959PMTmfNdBIqbFvQjkMgDD1qs1dSRx4r-p_dERMAR-GBosDKiHZo-4Wh-5m1Rs5lrikRPjScLU-VDf9XuTUEIIb-78QJvtFbOcJ_-Hwy1dhtw","text":"クッキー作る、電子レンジかトースターで作る"},"webhookEventId":"01KHCZRKHM5733FJ8HPXWYN9AX","deliveryContext":{"isRedelivery":false},"timestamp":1771036233158,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"dc489013b1a94c6eb7278f052456ae6a","mode":"active"}]}
+Processing text: クッキー作る、電子レンジかトースターで作る
+Success: {"category": "やることリスト", "summary": "クッキー、電子レンジ、トースター", "reply_message": "クッキー作りですね！🍪 頑張ってください！😋"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"600976076998705620","quoteToken":"wtLYwXYtUjf2TQDxEu8R9HXVU5no6NqbQL2f6bZBDiSMXSrOlmFMj8XtRQVx3N7d08HjIpD-DB9YBv2C7k4FENp29Xm0m0CA9fV62XTrzieg4m09lXLwUvvbvbV4v4QMyvJ1NthgRQ_9rj4lylZ8hA","markAsReadToken":"wDgF0jGwmqSTZSa-bpgE_TBuk5Ue_22YsyjEaVVLY8uQIUuStO-6D7PCEQPLSMz0HcmVwLJw455ZgSqNjFTWYyH8wnV4ORHDQaZK3SXvFCI6f0VWeFu--yqSJy23F6utS6QHHMTm9G6MJziYsEFHXasr3itisrKZdpINEfYlORbDu1mzCt_EMCMvY_6FjiM0JU_Djeat9vjsHFcgPG4w3Q","text":"今天13:00和朱朱约会！"},"webhookEventId":"01KHD48VWK3TVHSJGKZ9G42XBY","deliveryContext":{"isRedelivery":false},"timestamp":1771040959896,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"a92cd3c427264a8c96d915e319693b7f","mode":"active"}]}
+Processing text: 今天13:00和朱朱约会！
+Success: {"category": "予定", "summary": "朱朱とのデート", "reply_message": "13:00に朱朱さんとのデートですね！楽しんでくださいね😊💖"}
+Callback received
+Body: {"destination":"Ua665ac2b4bdbd06c5dd500e4bde52164","events":[{"type":"message","message":{"type":"text","id":"601010638919303534","quoteToken":"9y6J8AofuEz9tJy44aBKSb5jyrZ68YLH5yBsREwNaXPnt10EDLGDIT8oSlwXOJW-2RSwaoQjWBqbHYUwwRs8lk31aaeLgW6esOB14hGetfa4Gz1qzW3wvoFNdM8GwViA5KGfwE6N1kl6Et_KMUe5wQ","markAsReadToken":"iqsQYBPbP-G0bQfhbGLvOagNMBHS4q0vcGGVXSndIBA0Fhn5vIwhO2aUbE6funbkH12uyD_m2pMebC0_4D6dTxwGBV4tqi-aPzTGIUCS8t-YRrZgEufjn0CA3BdFJ2bnVd43_gKbYlv9vTF9fN6G5qgmEh0v02OeyejiDKZk8N5MPq55vCGot6D4xQxPpSFQS6drEv2j2x3DUu6jCbvvFw","text":"銀だこー食べる"},"webhookEventId":"01KHDQXH3FCSS95FFXSBWQSH1W","deliveryContext":{"isRedelivery":false},"timestamp":1771061560405,"source":{"type":"user","userId":"Ud3ad674497920dd0753875733de38580"},"replyToken":"3ae77779fcea4830a595b6754e0c8d07","mode":"active"}]}
+Processing text: 銀だこー食べる
+Success: {"category": "買い物リスト", "summary": "銀だこ", "reply_message": "銀だこですね！おいしいですよね😋 楽しんでください！"}
+Callback received
+Body: {"destination": "Uxxxxxxxx", "events": [{"type": "message", "message": {"type": "text", "id": "12345678901234", "text": "\u725b\u4e73\u3092\u8cb7\u3046"}, "timestamp": 1625667243123, "source": {"type": "user", "userId": "U1234567890abcdef1234567890abcdef"}, "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA"}]}
+Processing text: 牛乳を買う
+Success: {"category": "買い物リスト", "summary": "牛乳", "reply_message": "承知いたしました！牛乳のお買い物ですね。🥛 忘れずに！"}
+Callback Error: LineBotApiError: status_code=400, request_id=09e28807-a3c9-4c25-bfbe-1a991f783416, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sun, 15 Feb 2026 04:23:57 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '09e28807-a3c9-4c25-bfbe-1a991f783416', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
+Traceback (most recent call last):
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 47, in callback
+    handler.handle(body, signature)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 278, in handle
+    self.__invoke_func(func, event, payload)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\webhook.py", line 290, in __invoke_func
+    func(event)
+    ~~~~^^^^^^^
+  File "C:\Users\nakay\OneDrive\デスクトップ\test\app.py", line 102, in handle_message
+    line_bot_api.reply_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        event.reply_token,
+        ^^^^^^^^^^^^^^^^^^
+        TextSendMessage(text=reply_text)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\deprecated\classic.py", line 199, in wrapper_function
+    return wrapped_(*args_, **kwargs_)
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 123, in reply_message
+    self._post(
+    ~~~~~~~~~~^
+        '/v2/bot/message/reply', data=json.dumps(data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2116, in _post
+    self.__check_error(response)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\nakay\AppData\Local\Programs\Python\Python313\Lib\site-packages\linebot\api.py", line 2152, in __check_error
+    raise LineBotApiError(
+    ...<5 lines>...
+    )
+linebot.exceptions.LineBotApiError: LineBotApiError: status_code=400, request_id=09e28807-a3c9-4c25-bfbe-1a991f783416, error_response={"details": [], "message": "Invalid reply token"}, headers={'server': 'legy', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'content-type': 'application/json', 'date': 'Sun, 15 Feb 2026 04:23:57 GMT', 'expires': '0', 'pragma': 'no-cache', 'x-content-type-options': 'nosniff', 'x-frame-options': 'DENY', 'x-line-request-id': '09e28807-a3c9-4c25-bfbe-1a991f783416', 'x-xss-protection': '1; mode=block', 'content-length': '33'}
