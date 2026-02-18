@@ -18,6 +18,10 @@ sys.stderr.reconfigure(encoding='utf-8')
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return "I am awake!", 200
+
 # Get secrets from .env
 CHANNEL_ACCESS_TOKEN = os.getenv('LINE_CHANNEL_ACCESS_TOKEN')
 CHANNEL_SECRET = os.getenv('LINE_CHANNEL_SECRET')
@@ -104,5 +108,32 @@ def handle_message(event):
         TextSendMessage(text=reply_text)
     )
 
+from apscheduler.schedulers.background import BackgroundScheduler
+import requests
+
+# ... (Existing code)
+
+def ping_self():
+    url = os.getenv('RENDER_EXTERNAL_URL')
+    if url:
+        try:
+            # Ping the callback endpoint or just the root
+            # Note: Ping a lightweight endpoint if possible to save resources
+            # But here we just want to keep it awake.
+            # Using a simple GET request
+            response = requests.get(url)
+            print(f"Pinged self at {url}: {response.status_code}")
+        except Exception as e:
+            print(f"Error pinging self: {e}")
+
+# Scheduler Setup
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=ping_self, trigger="interval", minutes=10)
+scheduler.start()
+
 if __name__ == "__main__":
-    app.run(port=5000)
+    # Ensure scheduler shuts down when app exits (optional but good for local dev)
+    try:
+        app.run(port=5000)
+    except (KeyboardInterrupt, SystemExit):
+        scheduler.shutdown()
